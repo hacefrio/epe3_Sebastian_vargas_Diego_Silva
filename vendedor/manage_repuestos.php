@@ -16,12 +16,13 @@ function getRepuestos($pdo) {
 
 // Insertar un nuevo repuesto
 if (isset($_POST['add'])) {
-    $nombre = $_POST['nombre'];
     $NombreRepuesto = $_POST['NombreRepuesto'];
     $PrecioUnitario = $_POST['PrecioUnitario'];
+    $CantidadStock = $_POST['CantidadStock'];
+    $Proveedor = $_POST['Proveedor'];
 
-    $stmt = $pdo->prepare("INSERT INTO repuestos (nombre, NombreRepuesto, PrecioUnitario) VALUES (?, ?, ?)");
-    $stmt->execute([$nombre, $NombreRepuesto, $PrecioUnitario]);
+    $stmt = $pdo->prepare("INSERT INTO repuestos (NombreRepuesto, PrecioUnitario, CantidadStock,Proveedor) VALUES (?, ?, ?,?)");
+    $stmt->execute([$NombreRepuesto, $PrecioUnitario, $CantidadStock,$Proveedor]);
 
     header("Location: manage_repuestos.php");
     exit();
@@ -46,7 +47,7 @@ if (isset($_POST['update'])) {
     $Proveedor = $_POST['Proveedor'];
 
     $stmt = $pdo->prepare("UPDATE repuestos SET NombreRepuesto = ?, PrecioUnitario = ?, CantidadStock = ?, Proveedor =? WHERE RepuestoID = ?");
-    $stmt->execute([$NombreRepuesto, $PrecioUnitario, $CantidadStock,$CantidadStock, $RepuestoID]);
+    $stmt->execute([$NombreRepuesto, $PrecioUnitario, $CantidadStock,$Proveedor, $RepuestoID]);
 
     header("Location: manage_repuestos.php");
     exit();
@@ -86,7 +87,7 @@ $repuestos = getRepuestos($pdo);
             <?php foreach ($repuestos as $repuesto): ?>
             <tr>
                 <form action="manage_repuestos.php" method="post">
-                <td><input type="number" name="RepuestoID" value="<?= $repuesto['RepuestoID']; ?>"></td>
+                <td><input type="text" name="RepuestoID" value="<?= $repuesto['RepuestoID']; ?>" readonly></td>
                     <td><input type="text" name="NombreRepuesto" value="<?= $repuesto['NombreRepuesto']; ?>"></td>
                     <td><input type="number" name="PrecioUnitario" value="<?= $repuesto['PrecioUnitario']; ?>"></td>
                     <td><input type="number" name="CantidadStock" value="<?= $repuesto['CantidadStock']; ?>"></td>
