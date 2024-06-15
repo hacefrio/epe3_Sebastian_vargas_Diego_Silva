@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['Tipo'] != 'Vendedor') {
-    header('Location: /index.php');
+    header('Location: /login.php');
     exit();
 }
 ?>
