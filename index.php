@@ -30,10 +30,10 @@ $tipoUsuario = $_SESSION['Tipo'];
 
         <?php if ($tipoUsuario == 'Administrador'): ?>
         <h2>Opciones de Administrador</h2>
-        <a href="administrador/manage_usuarios.php" class="btn btn-primary">Agregar Usuarios</a>
+        <a href="administrador/manage_usuarios.php" class="btn btn-primary">Adminstrar Usuarios</a>
         <?php elseif ($tipoUsuario == 'Vendedor'): ?>
         <h2>Opciones de Vendedor</h2>
-        <a href="vendedor/manage_repuestos.php" class="btn btn-primary">Agregar Repuesto</a>
+        <a href="vendedor/manage_repuestos.php" class="btn btn-primary">Adminstrar Repuesto</a>
         <?php endif; ?>
         <a href="login.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
