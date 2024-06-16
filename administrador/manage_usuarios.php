@@ -42,7 +42,7 @@ $totalPages = ceil($totalUsuarios / $perPage);
 if (isset($_POST['update'])) {
     $Rut = $_POST['Rut'];
     $Correo = $_POST['Correo'];
-    $Contraseña = password_hash($_POST['Contraseña'], PASSWORD_DEFAULT);
+    $Contraseña = $_POST['Contraseña'];
     $Tipo = $_POST['Tipo'];
 
     $stmt = $pdo->prepare("UPDATE usuarios SET Correo = ?, Contraseña = ?, Tipo = ? WHERE Rut = ?");
@@ -66,7 +66,7 @@ if (isset($_GET['delete'])) {
 if (isset($_POST['add'])) {
     $Rut = $_POST['Rut'];
     $Correo = $_POST['Correo'];
-    $Contraseña = password_hash($_POST['Contraseña'], PASSWORD_DEFAULT);
+    $Contraseña = $_POST['Contraseña'];
     $Tipo = $_POST['Tipo'];
 
     $stmt = $pdo->prepare("INSERT INTO usuarios (Rut, Correo, Contraseña, Tipo) VALUES (?, ?, ?, ?)");
@@ -90,6 +90,9 @@ if (isset($_POST['add'])) {
             document.getElementById('viewUserSection').style.display = 'none';
             document.getElementById(section).style.display = 'block';
         }
+        window.onload = function() {
+            showSection('viewUserSection'); // Muestra la tabla de usuarios al cargar la página
+        };
     </script>
 </head>
 <body class="container">
