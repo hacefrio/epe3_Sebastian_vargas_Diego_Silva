@@ -31,11 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['rut'] = $user['Rut'];
         $_SESSION['Tipo'] = $user['Tipo'];
 
-        if ($user['Tipo'] == 'Administrador') {
-            header("Location: administrador/manage_usuarios.php");
-        } else if ($user['Tipo'] == 'Vendedor') {
-            header("Location: vendedor/manage_repuestos.php");
-        }
+        header("Location: index.php");
     } else {
         echo "<p>Credenciales incorrectas.</p>";
     }

@@ -99,6 +99,7 @@ if (isset($_POST['add'])) {
     <div class="text-center mb-4">
         <button onclick="showSection('addUserSection')" class="btn btn-primary">Agregar Usuario</button>
         <button onclick="showSection('viewUserSection')" class="btn btn-secondary">Ver Usuarios</button>
+        <a href="../login.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
 
     <!-- Sección para agregar usuarios -->
