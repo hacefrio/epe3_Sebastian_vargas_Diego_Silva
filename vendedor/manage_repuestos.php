@@ -148,15 +148,17 @@ if (isset($_POST['update'])) {
             <tbody>
                 <?php foreach ($repuestos as $repuesto): ?>
                 <tr>
-                    <td><?= htmlspecialchars($repuesto['RepuestoID']); ?></td>
-                    <td><?= htmlspecialchars($repuesto['NombreRepuesto']); ?></td>
-                    <td><?= htmlspecialchars($repuesto['PrecioUnitario']); ?></td>
-                    <td><?= htmlspecialchars($repuesto['CantidadStock']); ?></td>
-                    <td><?= htmlspecialchars($repuesto['Proveedor']); ?></td>
-                    <td>
-                        <button class="btn btn-success" onclick="editRepuesto('<?= $repuesto['RepuestoID']; ?>')">Editar</button>
-                        <a href="?delete=<?= $repuesto['RepuestoID']; ?>&search=<?= htmlspecialchars($search) ?>&page=<?= $page ?>" class="btn btn-danger">Eliminar</a>
-                    </td>
+                    <form action="manage_repuestos.php?search=<?= htmlspecialchars($search) ?>&page=<?= $page ?>" method="post">
+                        <td><input type="text" name="RepuestoID" value="<?= htmlspecialchars($repuesto['RepuestoID']); ?>" readonly class="form-control"></td>
+                        <td><input type="text" name="NombreRepuesto" value="<?= htmlspecialchars($repuesto['NombreRepuesto']); ?>" class="form-control"></td>
+                        <td><input type="number" name="PrecioUnitario" value="<?= htmlspecialchars($repuesto['PrecioUnitario']); ?>" class="form-control"></td>
+                        <td><input type="number" name="CantidadStock" value="<?= htmlspecialchars($repuesto['CantidadStock']); ?>" class="form-control"></td>
+                        <td><input type="text" name="Proveedor" value="<?= htmlspecialchars($repuesto['Proveedor']); ?>" class="form-control"></td>
+                        <td>
+                            <button type="submit" name="update" class="btn btn-success">Actualizar</button>
+                            <a href="?delete=<?= htmlspecialchars($repuesto['RepuestoID']); ?>&search=<?= htmlspecialchars($search) ?>&page=<?= $page ?>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </form>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
